@@ -1,25 +1,14 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 5.2.4 or newer
- *
- * NOTICE OF LICENSE
- *
- * Licensed under the Open Software License version 3.0
- *
- * This source file is subject to the Open Software License (OSL 3.0) that is
- * bundled with this package in the files license.txt / license.rst.  It is
- * also available through the world wide web at this URL:
- * http://opensource.org/licenses/OSL-3.0
- * If you did not receive a copy of the license and are unable to obtain it
- * through the world wide web, please send an email to
- * licensing@ellislab.com so we can send you a copy immediately.
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
- * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
  * @filesource
@@ -40,13 +29,18 @@
  */
 class CI_Trackback {
 
-	public $time_format	= 'local';
-	public $charset		= 'UTF-8';
-	public $data			= array('url' => '', 'title' => '', 'excerpt' => '', 'blog_name' => '', 'charset' => '');
-	public $convert_ascii	= TRUE;
-	public $response		= '';
-	public $error_msg		= array();
+	var $time_format	= 'local';
+	var $charset		= 'UTF-8';
+	var $data			= array('url' => '', 'title' => '', 'excerpt' => '', 'blog_name' => '', 'charset' => '');
+	var $convert_ascii	= TRUE;
+	var $response		= '';
+	var $error_msg		= array();
 
+	/**
+	 * Constructor
+	 *
+	 * @access	public
+	 */
 	public function __construct()
 	{
 		log_message('debug', "Trackback Class Initialized");
@@ -57,10 +51,11 @@ class CI_Trackback {
 	/**
 	 * Send Trackback
 	 *
+	 * @access	public
 	 * @param	array
 	 * @return	bool
 	 */
-	public function send($tb_data)
+	function send($tb_data)
 	{
 		if ( ! is_array($tb_data))
 		{
@@ -90,9 +85,20 @@ class CI_Trackback {
 			}
 
 			// Convert High ASCII Characters
-			if ($this->convert_ascii == TRUE && in_array($item, array('excerpt', 'title', 'blog_name')))
+			if ($this->convert_ascii == TRUE)
 			{
-				$$item = $this->convert_ascii($$item);
+				if ($item == 'excerpt')
+				{
+					$$item = $this->convert_ascii($$item);
+				}
+				elseif ($item == 'title')
+				{
+					$$item = $this->convert_ascii($$item);
+				}
+				elseif ($item == 'blog_name')
+				{
+					$$item = $this->convert_ascii($$item);
+				}
 			}
 		}
 
@@ -127,9 +133,10 @@ class CI_Trackback {
 	 * If the data is valid it is set to the $this->data array
 	 * so that it can be inserted into a database.
 	 *
+	 * @access	public
 	 * @return	bool
 	 */
-	public function receive()
+	function receive()
 	{
 		foreach (array('url', 'title', 'blog_name', 'excerpt') as $val)
 		{
@@ -141,7 +148,7 @@ class CI_Trackback {
 
 			$this->data['charset'] = ( ! isset($_POST['charset'])) ? 'auto' : strtoupper(trim($_POST['charset']));
 
-			if ($val != 'url' && MB_ENABLED === TRUE)
+			if ($val != 'url' && function_exists('mb_convert_encoding'))
 			{
 				$_POST[$val] = mb_convert_encoding($_POST[$val], $this->charset, $this->data['charset']);
 			}
@@ -168,10 +175,11 @@ class CI_Trackback {
 	 * sends the "incomplete information" error, as that's
 	 * the most common one.
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	void
 	 */
-	public function send_error($message = 'Incomplete Information')
+	function send_error($message = 'Incomplete Information')
 	{
 		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?".">\n<response>\n<error>1</error>\n<message>".$message."</message>\n</response>";
 		exit;
@@ -185,9 +193,10 @@ class CI_Trackback {
 	 * This should be called when a trackback has been
 	 * successfully received and inserted.
 	 *
+	 * @access	public
 	 * @return	void
 	 */
-	public function send_success()
+	function send_success()
 	{
 		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?".">\n<response>\n<error>0</error>\n</response>";
 		exit;
@@ -198,10 +207,11 @@ class CI_Trackback {
 	/**
 	 * Fetch a particular item
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	string
 	 */
-	public function data($item)
+	function data($item)
 	{
 		return ( ! isset($this->data[$item])) ? '' : $this->data[$item];
 	}
@@ -214,11 +224,12 @@ class CI_Trackback {
 	 * Opens a socket connection and passes the data to
 	 * the server.  Returns TRUE on success, FALSE on failure
 	 *
+	 * @access	public
 	 * @param	string
 	 * @param	string
 	 * @return	bool
 	 */
-	public function process($url, $data)
+	function process($url, $data)
 	{
 		$target = parse_url($url);
 
@@ -258,9 +269,15 @@ class CI_Trackback {
 		@fclose($fp);
 
 
-		if (stripos($this->response, '<error>0</error>') === FALSE)
+		if (stristr($this->response, '<error>0</error>') === FALSE)
 		{
-			$message = (preg_match('/<message>(.*?)<\/message>/is', $this->response, $match)) ? trim($match[1]) : 'An unknown error was encountered';
+			$message = 'An unknown error was encountered';
+
+			if (preg_match("/<message>(.*?)<\/message>/is", $this->response, $match))
+			{
+				$message = trim($match['1']);
+			}
+
 			$this->set_error($message);
 			return FALSE;
 		}
@@ -277,10 +294,11 @@ class CI_Trackback {
 	 * It takes a string of URLs (separated by comma or
 	 * space) and puts each URL into an array
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	string
 	 */
-	public function extract_urls($urls)
+	function extract_urls($urls)
 	{
 		// Remove the pesky white space and replace with a comma.
 		$urls = preg_replace("/\s*(\S+)\s*/", "\\1,", $urls);
@@ -289,7 +307,7 @@ class CI_Trackback {
 		$urls = str_replace(",,", ",", $urls);
 
 		// Remove any comma that might be at the end
-		if (substr($urls, -1) === ',')
+		if (substr($urls, -1) == ",")
 		{
 			$urls = substr($urls, 0, -1);
 		}
@@ -312,16 +330,17 @@ class CI_Trackback {
 	 *
 	 * Simply adds "http://" if missing
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	string
 	 */
-	public function validate_url($url)
+	function validate_url($url)
 	{
 		$url = trim($url);
 
-		if (strpos($url, 'http') !== 0)
+		if (substr($url, 0, 4) != "http")
 		{
-			$url = 'http://'.$url;
+			$url = "http://".$url;
 		}
 	}
 
@@ -330,10 +349,11 @@ class CI_Trackback {
 	/**
 	 * Find the Trackback URL's ID
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	string
 	 */
-	public function get_id($url)
+	function get_id($url)
 	{
 		$tb_id = "";
 
@@ -378,20 +398,23 @@ class CI_Trackback {
 	/**
 	 * Convert Reserved XML characters to Entities
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	string
 	 */
-	public function convert_xml($str)
+	function convert_xml($str)
 	{
 		$temp = '__TEMP_AMPERSANDS__';
 
-		$str = preg_replace(array('/&#(\d+);/', '/&(\w+);/'), "$temp\\1;", $str);
+		$str = preg_replace("/&#(\d+);/", "$temp\\1;", $str);
+		$str = preg_replace("/&(\w+);/",  "$temp\\1;", $str);
 
 		$str = str_replace(array("&","<",">","\"", "'", "-"),
 							array("&amp;", "&lt;", "&gt;", "&quot;", "&#39;", "&#45;"),
 							$str);
 
-		$str = preg_replace(array("/$temp(\d+);/", "/$temp(\w+);/"), array('&#\\1;', '&\\1;'), $str);
+		$str = preg_replace("/$temp(\d+);/","&#\\1;",$str);
+		$str = preg_replace("/$temp(\w+);/","&\\1;", $str);
 
 		return $str;
 	}
@@ -403,12 +426,13 @@ class CI_Trackback {
 	 *
 	 * Limits the string based on the character count. Will preserve complete words.
 	 *
+	 * @access	public
 	 * @param	string
 	 * @param	integer
 	 * @param	string
 	 * @return	string
 	 */
-	public function limit_characters($str, $n = 500, $end_char = '&#8230;')
+	function limit_characters($str, $n = 500, $end_char = '&#8230;')
 	{
 		if (strlen($str) < $n)
 		{
@@ -422,13 +446,13 @@ class CI_Trackback {
 			return $str;
 		}
 
-		$out = '';
+		$out = "";
 		foreach (explode(' ', trim($str)) as $val)
 		{
 			$out .= $val.' ';
 			if (strlen($out) >= $n)
 			{
-				return rtrim($out).$end_char;
+				return trim($out).$end_char;
 			}
 		}
 	}
@@ -441,10 +465,11 @@ class CI_Trackback {
 	 * Converts Hight ascii text and MS Word special chars
 	 * to character entities
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	string
 	 */
-	public function convert_ascii($str)
+	function convert_ascii($str)
 	{
 		$count	= 1;
 		$out	= '';
@@ -460,16 +485,16 @@ class CI_Trackback {
 			}
 			else
 			{
-				if (count($temp) === 0)
+				if (count($temp) == 0)
 				{
 					$count = ($ordinal < 224) ? 2 : 3;
 				}
 
 				$temp[] = $ordinal;
 
-				if (count($temp) === $count)
+				if (count($temp) == $count)
 				{
-					$number = ($count == 3) ? (($temp[0] % 16) * 4096) + (($temp[1] % 64) * 64) + ($temp[2] % 64) : (($temp[0] % 32) * 64) + ($temp[1] % 64);
+					$number = ($count == 3) ? (($temp['0'] % 16) * 4096) + (($temp['1'] % 64) * 64) + ($temp['2'] % 64) : (($temp['0'] % 32) * 64) + ($temp['1'] % 64);
 
 					$out .= '&#'.$number.';';
 					$count = 1;
@@ -486,10 +511,11 @@ class CI_Trackback {
 	/**
 	 * Set error message
 	 *
+	 * @access	public
 	 * @param	string
 	 * @return	void
 	 */
-	public function set_error($msg)
+	function set_error($msg)
 	{
 		log_message('error', $msg);
 		$this->error_msg[] = $msg;
@@ -500,13 +526,20 @@ class CI_Trackback {
 	/**
 	 * Show error messages
 	 *
+	 * @access	public
 	 * @param	string
 	 * @param	string
 	 * @return	string
 	 */
-	public function display_errors($open = '<p>', $close = '</p>')
+	function display_errors($open = '<p>', $close = '</p>')
 	{
-		return (count($this->error_msg) > 0) ? $open . implode($close . $open, $this->error_msg) . $close : '';
+		$str = '';
+		foreach ($this->error_msg as $val)
+		{
+			$str .= $open.$val.$close;
+		}
+
+		return $str;
 	}
 
 }
