@@ -39,8 +39,8 @@
 | path to your installation.
 |
 */
-//$config['base_url']	= 'http://sbobet.local/';
-$config['base_url']	= 'http://test.kittivate.com/';
+$config['base_url']	= 'http://sbobet.local/';
+//$config['base_url']	= 'http://test.kittivate.com/';
 
 /*
 |--------------------------------------------------------------------------

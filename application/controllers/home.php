@@ -29,6 +29,8 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+    $this->minify->css(array('bootstrap' => 'bootstrap.min.css', 'app.css'));
+    $this->minify->js(array('bootstrap' => 'bootstrap.min.js'));
 		$this->load->view('home');
 	}
 }

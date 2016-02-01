@@ -8,8 +8,7 @@
     %meta{:content => "black-translucent", :name => "apple-mobile-web-app-status-bar-style"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Kanit", :rel => "stylesheet" }
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
-    = css_asset('app.css')
-    = css_asset('bootstrap.min.css', 'bootstrap')
-    = js_asset('bootstrap.min.js', 'bootstrap')
+    = $this->minify->deploy_css()
+    = $this->minify->deploy_js()
   %body
     %h1 Hello, world!
