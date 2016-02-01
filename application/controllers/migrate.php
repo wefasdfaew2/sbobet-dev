@@ -7,6 +7,7 @@ class Migrate extends CI_Controller{
 
       if(!$this->migration->version($version)){
           show_error($this->migration->error_string());
-      }   
+      }else
+      	echo "success migration";
     }
 }

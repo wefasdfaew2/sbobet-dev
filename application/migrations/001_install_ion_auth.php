@@ -1,9 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Migration_Install_ion_auth extends CI_Migration {
+
 	public function up()
 	{
 		// Drop table 'groups' if it exists
 		$this->dbforge->drop_table('groups', TRUE);
+
 		// Table structure for table 'groups'
 		$this->dbforge->add_field(array(
 			'id' => array(
@@ -23,6 +26,7 @@ class Migration_Install_ion_auth extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('groups');
+
 		// Dumping data for table 'groups'
 		$data = array(
 			array(
@@ -37,8 +41,11 @@ class Migration_Install_ion_auth extends CI_Migration {
 			)
 		);
 		$this->db->insert_batch('groups', $data);
+
+
 		// Drop table 'users' if it exists
 		$this->dbforge->drop_table('users', TRUE);
+
 		// Table structure for table 'users'
 		$this->dbforge->add_field(array(
 			'id' => array(
@@ -125,9 +132,11 @@ class Migration_Install_ion_auth extends CI_Migration {
 				'constraint' => '20',
 				'null' => TRUE
 			)
+
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('users');
+
 		// Dumping data for table 'users'
 		$data = array(
 			'id' => '1',
@@ -147,8 +156,11 @@ class Migration_Install_ion_auth extends CI_Migration {
 			'phone' => '0',
 		);
 		$this->db->insert('users', $data);
+
+
 		// Drop table 'users_groups' if it exists
 		$this->dbforge->drop_table('users_groups', TRUE);
+
 		// Table structure for table 'users_groups'
 		$this->dbforge->add_field(array(
 			'id' => array(
@@ -170,6 +182,7 @@ class Migration_Install_ion_auth extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('users_groups');
+
 		// Dumping data for table 'users_groups'
 		$data = array(
 			array(
@@ -184,8 +197,11 @@ class Migration_Install_ion_auth extends CI_Migration {
 			)
 		);
 		$this->db->insert_batch('users_groups', $data);
+
+
 		// Drop table 'login_attempts' if it exists
 		$this->dbforge->drop_table('login_attempts', TRUE);
+
 		// Table structure for table 'login_attempts'
 		$this->dbforge->add_field(array(
 			'id' => array(
@@ -212,7 +228,9 @@ class Migration_Install_ion_auth extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('login_attempts');
+
 	}
+
 	public function down()
 	{
 		$this->dbforge->drop_table('users', TRUE);

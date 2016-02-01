@@ -1,49 +1,78 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
-* Name:  Ion Auth Lang - Portuguese
-* 
-* Author: AndrÈ Br·s Simıes
-* 		  andrebrassimoes@gmail.com
-*         
-* 
-* Location: http://github.com/benedmunds/ion_auth/
-*          
-* Created:  17.05.2010 
-* 
+* Name:  Ion Auth Lang - Portuguese (UTF-8)
+*
+* Author: Andr√© Br√°s Sim√µes
+*       andrebrassimoes@gmail.com
+*
+* Adjustments by @Dentxinho and @MichelAlonso and @marcelod
+*
+* Location: http://github.com/benedmunds/CodeIgniter-Ion-Auth
+*
+* Created:  17.05.2010
+*
 * Description:  Portuguese language file for Ion Auth messages and errors
-* 
+*
 */
 
 // Account Creation
-$lang['account_creation_successful'] 	  	 = 'Conta Criada com Sucesso';
-$lang['account_creation_unsuccessful'] 	 	 = 'N„o È possÌvel criar a Conta';
-$lang['account_creation_duplicate_email'] 	 = 'Email em Uso ou Inv·lido';
-$lang['account_creation_duplicate_username'] 	 = 'Nome de Usu·rio em Uso ou Inv·lido';
-
+$lang['account_creation_successful']         	= 'Conta criada com sucesso';
+$lang['account_creation_unsuccessful']       	= 'N√£o foi poss√≠vel criar a conta';
+$lang['account_creation_duplicate_email']    	= 'Email em uso ou inv√°lido';
+$lang['account_creation_duplicate_identity'] 	= 'Nome de usu√°rio em uso ou inv√°lido';
+$lang['account_creation_missing_default_group'] = 'Grupo padr√£o n√£o est√° definido';
+$lang['account_creation_invalid_default_group'] = 'Nome padr√£o do grupo definido √© inv√°lido';
 
 // Password
-$lang['password_change_successful'] 	 	 = 'Password Alterada com Sucesso';
-$lang['password_change_unsuccessful'] 	  	 = 'N„o È PossÌvel Alterar a Password';
-$lang['forgot_password_successful'] 	 	 = 'Nova Password Enviada por Email';
-$lang['forgot_password_unsuccessful'] 	 	 = 'N„o È PossÌvel Criar uma Nova Password';
+$lang['password_change_successful']         = 'Senha alterada com sucesso';
+$lang['password_change_unsuccessful']       = 'N√£o foi poss√≠vel alterar a senha';
+$lang['forgot_password_successful']         = 'Nova senha enviada por email';
+$lang['forgot_password_unsuccessful']       = 'N√£o foi poss√≠vel criar uma nova senha';
 
 // Activation
-$lang['activate_successful'] 		  	 = 'Conta Activada';
-$lang['activate_unsuccessful'] 		 	 = 'N„o È PossÌvel Activar a Conta';
-$lang['deactivate_successful'] 		  	 = 'Conta Desactivada';
-$lang['deactivate_unsuccessful'] 	  	 = 'N„o È PossÌvel Desactivar a Conta';
-$lang['activation_email_successful'] 	  	 = 'Email de ActivaÁ„o Enviado';
-$lang['activation_email_unsuccessful']   	 = 'N„o È PossÌvel Enviar o Email de ActivaÁ„o';
+$lang['activate_successful']                = 'Conta ativada';
+$lang['activate_unsuccessful']              = 'N√£o foi poss√≠vel ativar a conta';
+$lang['deactivate_successful']              = 'Conta desativada';
+$lang['deactivate_unsuccessful']            = 'N√£o foi poss√≠vel desativar a conta';
+$lang['activation_email_successful']        = 'Email de ativa√ß√£o enviado com sucesso';
+$lang['activation_email_unsuccessful']      = 'N√£o foi poss√≠vel enviar o email de ativa√ß√£o';
 
 // Login / Logout
-$lang['login_successful'] 		  	 = 'Sess„o Iniciada com Sucesso';
-$lang['login_unsuccessful'] 		  	 = 'N„o È PossÌvel Iniciar Sess„o';
-$lang['logout_successful'] 		 	 = 'Sess„o Terminada com Sucesso';
-  
-// Account Changes
-$lang['update_successful'] 		 	 = 'InformaÁ„o da Conta Actualizada com Sucesso';
-$lang['update_unsuccessful'] 		 	 = 'N„o È PossÌvel Actualizar a InformaÁ„o da Conta';
-$lang['delete_successful'] 		 	 = 'Utilizador Removido';
-$lang['delete_unsuccessful'] 		 	 = 'N„o È PossÌvel Remover o Utilizador';
+$lang['login_successful']                   = 'Sess√£o iniciada com sucesso';
+$lang['login_unsuccessful']                 = 'Usu√°rio ou senha inv√°lidos';
+$lang['login_unsuccessful_not_active']      = 'A conta est√° desativada';
+$lang['login_timeout']                      = 'Conta temporariamente bloqueada. Tente novamente mais tarde';
+$lang['logout_successful']            		= 'Sess√£o encerrada com sucesso';
 
-?>
+// Account Changes
+$lang['update_successful']                  = 'Informa√ß√µes da conta atualizadas com sucesso';
+$lang['update_unsuccessful']                = 'N√£o foi poss√≠vel atualizar as informa√ß√µes da conta';
+$lang['delete_successful']                  = 'Usu√°rio exclu√≠do com sucesso';
+$lang['delete_unsuccessful']                = 'N√£o foi poss√≠vel excluir o usu√°rio';
+
+// Groups
+$lang['group_creation_successful']          = 'Grupo criado com sucesso';
+$lang['group_already_exists']               = 'Um grupo com este nome j√° existe';
+$lang['group_update_successful']            = 'Dados do grupo atualizados com sucesso';
+$lang['group_delete_successful']            = 'Grupo exclu√≠do com sucesso';
+$lang['group_delete_unsuccessful']          = 'N√£o foi poss√≠vel excluir o grupo';
+$lang['group_delete_notallowed']    		= 'N√£o √© poss√≠vel excluir o grupo de administradores';
+$lang['group_name_required'] 				= 'Nome do grupo √© um campo obrigat√≥rio';
+$lang['group_name_admin_not_alter'] 		= 'Nome do grupo administrador n√£o pode ser alterado';
+
+// Activation Email
+$lang['email_activation_subject']           = 'Ativa√ß√£o da conta';
+$lang['email_activate_heading']    			= 'Ative sua conta para %s';
+$lang['email_activate_subheading'] 			= 'Por favor, clique neste link para %s.';
+$lang['email_activate_link']       			= 'Ative sua conta';
+
+// Forgot Password Email
+$lang['email_forgotten_password_subject']   = 'Esqueci a senha';
+$lang['email_forgot_password_heading']    	= 'Redefinido a senha para %s';
+$lang['email_forgot_password_subheading'] 	= 'Por favor, clique neste link para %s.';
+$lang['email_forgot_password_link']       	= 'Redefina sua senha';
+
+// New Password Email
+$lang['email_new_password_subject']         = 'Nova senha';
+$lang['email_new_password_heading']    		= 'Nova senha para %s';
+$lang['email_new_password_subheading'] 		= 'Sua senha foi redefinida para: %s';
