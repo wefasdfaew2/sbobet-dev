@@ -22,7 +22,7 @@ function other_asset_url($asset_name, $module_name = NULL, $asset_type = NULL)
 		$asset_location .= 'modules/'.$module_name.'/';
 	endif;
 
-	$asset_location .= $asset_type.'/'.$asset_name;
+	$asset_location .= !is_null($asset_type) ? $asset_type.'/'.$asset_name : $asset_name;
 
 	return $asset_location;
 
