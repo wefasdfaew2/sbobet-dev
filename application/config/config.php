@@ -39,8 +39,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://sbobet.local/';
-//$config['base_url']	= 'http://test.kittivate.com/';
+//$config['base_url']	= 'http://sbobet.local/';
+$config['base_url']	= 'http://test.kittivate.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -419,7 +419,7 @@ $config['haml_cache_base_path'] = APPPATH.'assets/haml/';
 */
 $config['sass_cache_path'] = '';
 $config['sass_asset_path'] = APPPATH.'assets/sass';
-$config['sass_output_path'] = APPPATH.'assets/css';
+$config['sass_output_path'] = 'assets/css';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

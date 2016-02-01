@@ -25,28 +25,8 @@
  * @filesource
  */
 
-class Welcome extends CI_Controller {
+class Home extends CI_Controller {
 
-  protected $layout = 'layout';
-  protected $stylesheets = array(
-    'app.css'
-  );
-  protected $javascripts = array(
-  'app.js'
-  );
-  protected $local_stylesheets = array();
-  protected $local_javascripts = array();
- 
-  //other parts of the class..
- 
-  protected function get_stylesheets() {
-    return array_merge($this->stylesheets,$this->local_stylesheets);
-  }
- 
-  protected function get_javascripts() {
-    return array_merge($this->javascripts,$this->local_javascripts);
-  }
- 
 	public function index()
 	{
 		$this->load->view('home');
