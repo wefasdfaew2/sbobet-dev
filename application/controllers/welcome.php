@@ -27,35 +27,29 @@
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+  protected $layout = 'layout';
+  protected $stylesheets = array(
+    'app.css'
+  );
+  protected $javascripts = array(
+  'app.js'
+  );
+  protected $local_stylesheets = array();
+  protected $local_javascripts = array();
+ 
+  //other parts of the class..
+ 
+  protected function get_stylesheets() {
+    return array_merge($this->stylesheets,$this->local_stylesheets);
+  }
+ 
+  protected function get_javascripts() {
+    return array_merge($this->javascripts,$this->local_javascripts);
+  }
+ 
 	public function index()
 	{
-		if($this->input->get('haml') == 'true')
-		{
-			$this->load->view('welcome_message_haml');
-		}
-		elseif($this->input->get('sass') == 'true')
-		{
-			$this->load->view('welcome_message_sass');			
-		}
-		else
-		{
-			$this->load->view('welcome_message');
-		}
+		$this->load->view('home');
 	}
 }
 
