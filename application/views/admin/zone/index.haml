@@ -1,0 +1,25 @@
+.content-wrapper
+  %section{:class => 'content-header'}
+    %h1 
+      %i{:class => 'fa fa-wrench'}
+      %span Zone
+      %small Setting
+    %ol{:class => 'breadcrumb'}
+      %li
+        %i{:class => 'fa fa-cog'}
+        %span Setting
+      %li{:class => 'active'} Zone
+  %section{:class => 'content'}
+    .row
+
+  #confirm-delete{:class => 'modal fade', :tabindex => '-1', :role => 'dialog', :aria-hidden => 'true'}
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %strong 
+            %i{:class => 'fa fa-trash'} 
+            Do you want to delete?
+        .modal-footer
+          %button{:type => 'button', :class => 'btn btn-default', :data-dismiss => 'modal'} Cancel
+          %a{:class => 'btn btn-danger btn-ok'} Delete
+

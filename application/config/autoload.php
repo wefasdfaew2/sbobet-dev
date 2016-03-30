@@ -78,7 +78,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('session', 'minify');
+$autoload['libraries'] = array('database', 'session');
 
 
 /*
@@ -90,7 +90,7 @@ $autoload['libraries'] = array('session', 'minify');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'asset');
+$autoload['helper'] = array('url', 'asset', 'date');
 
 
 /*

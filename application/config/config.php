@@ -39,9 +39,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://sbobet.local/';
-//$config['base_url']	= 'http://test.kittivate.com/';
-
+$config['base_url']	= 'http://test.kittivate.com/';
+//$config['base_url'] = 'http://sbobethome.local/';
+//$config['base_url'] = 'http://www.sbobethome.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -70,7 +70,7 @@ $config['index_page'] = '';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= "REQUEST_URI";
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -259,7 +259,7 @@ $config['cache_path'] = '';
 | http://codeigniter.com/user_guide/libraries/sessions.html
 |
 */
-$config['encryption_key'] = 'sbobet';
+$config['encryption_key'] = 'arraieot';
 
 /*
 |--------------------------------------------------------------------------
@@ -406,7 +406,7 @@ $config['proxy_ips'] = '';
 | The path that the HAML parser will stored cached files.
 | If you don't specify a path, it will use APP_PATH/cache
 */
-$config['haml_cache_base_path'] = APPPATH.'assets/haml/';
+$config['haml_cache_base_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -418,8 +418,8 @@ $config['haml_cache_base_path'] = APPPATH.'assets/haml/';
 | sass_output_path: The path where the generated .css files will be saved, default is FCPATH/css
 */
 $config['sass_cache_path'] = '';
-$config['sass_asset_path'] = APPPATH.'assets/sass';
-$config['sass_output_path'] = 'assets/css';
+$config['sass_asset_path'] = '';
+$config['sass_output_path'] = 'assets/css/';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

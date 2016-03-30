@@ -1,0 +1,54 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eeeeee; }
+
+.user-panel {
+  padding: 10px 20px; }
+  .user-panel .user-detail {
+    padding: 10px 10px; }
+  .user-panel .btn {
+    margin: 5px; }
+
+#zone-selection {
+  font-size: 30px;
+  padding: 15px; }
+  #zone-selection .stand {
+    height: 50px;
+    padding: 15px; }
+  #zone-selection .kitchen {
+    padding: 60px 0px;
+    height: 150px;
+    margin: 10px 0; }
+  #zone-selection .bar {
+    padding: 40px 0;
+    height: 100px;
+    margin: 10px 0; }
+  #zone-selection .btn {
+    margin: 10px 0;
+    font-size: 40px; }
+
+  #table-area .btn.table-area {
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    margin: 8px 5px;
+    font-size: 2em; }
+
+  #pos-list .panel {
+    margin-bottom: 0px; }
+  #pos-list .panel-heading {
+    font-size: 30px; }
+    #pos-list .panel-heading .label-table {
+      padding: 0 5px; }
+    #pos-list .panel-heading .product-selection {
+      padding-top: 10px; }
+  #pos-list #order-list {
+    padding-top: 0; }
+  #pos-list .panel-footer {
+    font-size: 30px; }
+    #pos-list #pos-btn-panel .btn {
+      font-size: 1.8em;
+      margin: 5px 13px;
+      height: 50px; }
+

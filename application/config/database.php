@@ -76,20 +76,30 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['dsn']      = '';
-$db['default']['hostname'] = 'localhost';
+//localhost
+//$db['default']['hostname'] = 'localhost';
 //$db['default']['username'] = 'root';
 //$db['default']['password'] = '';
+
+//development
+$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'arraieot';
 $db['default']['password'] = 'gueangna';
-$db['default']['database'] = 'sbo_dev_db';
+
+//staging
+//$db['default']['hostname'] = '166.62.8.5';
+//$db['default']['username'] = 'mastersh2015';
+//$db['default']['password'] = 'Msh@2015';
+
+$db['default']['database'] = 'mastersh2015';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
+$db['default']['char_set'] = 'utf8mb4';
+$db['default']['dbcollat'] = 'utf8mb4_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
