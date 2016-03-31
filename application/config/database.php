@@ -82,14 +82,14 @@ $db['default']['dsn']      = '';
 //$db['default']['password'] = '';
 
 //development
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'arraieot';
-$db['default']['password'] = 'gueangna';
+//$db['default']['hostname'] = 'localhost';
+//$db['default']['username'] = 'arraieot';
+//$db['default']['password'] = 'gueangna';
 
 //staging
-//$db['default']['hostname'] = '166.62.8.5';
-//$db['default']['username'] = 'mastersh2015';
-//$db['default']['password'] = 'Msh@2015';
+$db['default']['hostname'] = '166.62.8.5';
+$db['default']['username'] = 'mastersh2015';
+$db['default']['password'] = 'Msh@2015';
 
 $db['default']['database'] = 'mastersh2015';
 $db['default']['dbdriver'] = 'mysql';
